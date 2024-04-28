@@ -25,4 +25,5 @@ require('lazy').setup({
     require('plugins.utils'),
     require('plugins.lsp'),
     require('plugins.cmp'),
+    require('plugins.null-ls'),
 })

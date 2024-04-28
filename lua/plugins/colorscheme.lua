@@ -1,45 +1,61 @@
 return {
     {
-    "folke/tokyonight.nvim",
-    dependencies = {
-        'nvim-lualine/lualine.nvim',
-        'nvim-tree/nvim-web-devicons',
-        'utilyre/barbecue.nvim',
-        'SmiteshP/nvim-navic',
-    },
-    lazy = false,
-    priority = 1000,
-    config = function()
-        vim.cmd[[colorscheme tokyonight-storm]]
-        require('lualine').setup({
+        -- "folke/tokyonight.nvim",
+        "catppuccin/nvim",
+        dependencies = {
+            'nvim-lualine/lualine.nvim',
+            'nvim-tree/nvim-web-devicons',
+            'utilyre/barbecue.nvim',
+            'SmiteshP/nvim-navic',
+        },
+        -- lazy = false,
+        priority = 1000,
+        config = function()
+            vim.cmd [[colorscheme catppuccin-frappe]]
+            require('lualine').setup({
                 event = "VeryLazy",
                 options = {
-                    theme = "tokyonight"
+                    theme = "catppuccin"
                 },
-        })
-        require('barbecue').setup {
-            theme = 'tokyonight',
-        }
-        require("tokyonight").setup({
-            style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-            light_style = "day", -- The theme is used when the background is set to light
-            transparent = false, -- Enable this to disable setting the background color
-            terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
-            styles = {
-                comments = { italic = true },
-                keywords = { bold = true },
-                functions = { bold = true },
-                variables = {},
-                sidebars = "dark", -- style for sidebars, see below
-                floats = "dark", -- style for floating windows
-            },
-            sidebars = {"qf", "help"},
-            day_brightness = 0.3,
-            hide_inactive_statusline = true,
-            dim_inactive = true,
-            lualine_bold = true,
-        })
-
-    end
+            })
+            require('barbecue').setup {
+                theme = 'catppuccin',
+            }
+            require("catppuccin").setup({
+                flavour = "frappe",
+                background = {
+                    dark = "mocha",
+                },
+                no_italic = false,
+                no_bold = false,
+                no_underline = false,
+                styles = {
+                    comment = { "italic" },
+                    conditionals = { "bold" },
+                    loops = { "bold" },
+                    functions = { "bold" },
+                    keywords = { "bold" },
+                    strings = {},
+                    variables = {},
+                    numbers = {},
+                    booleans = { "bold" },
+                    properties = {},
+                    types = {},
+                    operators = { "bold" },
+                },
+                integrations = {
+                    cmp = true,
+                    gitsigns = true,
+                    nvimtree = true,
+                    treesitter = true,
+                    -- notify = false,
+                    -- mini = {
+                    --     enabled = true,
+                    --     indentscope_color = "",
+                    -- },
+                    -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+                },
+            })
+        end
     },
 }
